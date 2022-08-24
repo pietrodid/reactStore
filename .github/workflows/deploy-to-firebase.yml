@@ -1,14 +1,15 @@
 name: Build and Deploy
 on: [push]
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@main
       - name: Install Dependencies
-        run: npminstall--force 
+        run: npm install
       - name: Build
         run: npm run build
       - name: Archive Production Artifact
@@ -22,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@main
       - name: Download Artifact
         uses: actions/download-artifact@master
         with:
