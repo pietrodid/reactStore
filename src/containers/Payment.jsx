@@ -15,14 +15,18 @@ const Payment = () => {
       currency: "USD"
   }
 
-  const buttonStyles = {
-      Layout: "vertical",
-      shape: "rect",
-  }
+const buttonStyles ={
+        style: {
+            layout: 'vertical',
+            color:  'blue',
+            shape:  'rect',
+            label:  'paypal'
+          }
+    }
 
   const handleSumTotal = () => {
       const reducer = (accumulator, currentValue) =>
-          accumulator + currentValue.price;
+        accumulator + currentValue.price;
       const sum = cart.reduce(reducer, 0);
       return sum;
   };
@@ -74,7 +78,7 @@ const Payment = () => {
                       <span><strong>$ {handleSumTotal()}</strong></span>
               </div>
               <div className="Payment-button">
-                  <PayPalButton
+                <PayPalButton
                   paypalOptions={paypalOptions}
                   buttonStyles={buttonStyles}
                   createOrder={(data, actions) => createOrder(data, actions)}
